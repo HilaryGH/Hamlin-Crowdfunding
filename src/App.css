@@ -1,0 +1,35 @@
+
+.bg-green-radial {
+  background: radial-gradient(circle at center, #22C55E 0%, #065F46 70%, #022C22 100%);
+}
+/* ==== TEXT COLORS ==== */
+.text-primary {
+  color: #22C55E; /* bright green */
+}
+.poppins-medium {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+.bg-btn{
+  background-color: #1d6ceb;
+}
+
+.text-white {
+  color: #ffffff;
+}
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.3s ease-out forwards;
+}
+
+ 
