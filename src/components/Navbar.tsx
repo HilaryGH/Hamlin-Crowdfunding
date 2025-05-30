@@ -91,10 +91,11 @@ function Navbar() {
         </div>
       </header>
 
+      {/* Full-screen overlay with backdrop */}
       {menuOpen && (
-        <>
-          {/* Backdrop */}
-          <nav className="md:hidden fixed top-0 left-0 bottom-0 w-3/4 max-w-xs z-[60] bg-green-radial px-6 py-4 flex flex-col space-y-6 animate-slide-in-left">
+        <div className="fixed inset-0 z-50 flex">
+          {/* Sidebar (3/4 width) */}
+          <nav className="w-3/4 max-w-xs bg-green-radial px-6 py-4 flex flex-col space-y-6 animate-slide-in-left">
             {/* Top row: Logo + X button */}
             <div className="flex items-center justify-between w-full">
               <div className="flex items-center gap-2">
@@ -115,12 +116,12 @@ function Navbar() {
 
             {/* Nav Links */}
             <div className="flex flex-col space-y-4 mt-4">
-              {["Home", "About", "Our Services ", "Projects", "Contact Us"].map(
+              {["Home", "About", "Our Services", "Projects", "Contact Us"].map(
                 (text) => (
                   <a
                     key={text}
-                    href={`#${text.toLowerCase()}`}
-                    className="text-white text-lg font-medium border-b border-purple-400 pb-2"
+                    href={`#${text.toLowerCase().replace(/\s/g, "")}`}
+                    className="text-white text-lg font-medium border-b border-white pb-2"
                     onClick={() => setMenuOpen(false)}
                   >
                     {text}
@@ -137,7 +138,13 @@ function Navbar() {
               </button>
             </div>
           </nav>
-        </>
+
+          {/* Backdrop (1/4 width) */}
+          <div
+            className="flex-1 bg-green-radial opacity-40"
+            onClick={() => setMenuOpen(false)}
+          ></div>
+        </div>
       )}
     </>
   );

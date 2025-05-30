@@ -1,7 +1,7 @@
 function Footor() {
   return (
     <>
-      <section className="bg-[#065F46] text-white py-12 px-4">
+      <section className="bg-green-radial text-white py-12 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             Join the Movement
@@ -9,7 +9,7 @@ function Footor() {
           <p className="mb-6 text-gray-200">
             Support innovative projects and empower communities across Ethiopia.
           </p>
-          <button className="bg-[#22C55E] text-white px-6 py-3 rounded-full hover:bg-[#15803D] transition">
+          <button className="bg-[#022C22] text-white px-6 py-3 rounded-full hover:bg-[#15803D] transition">
             Discover Projects
           </button>
         </div>

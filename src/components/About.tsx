@@ -2,19 +2,18 @@ import { Link } from "react-router-dom";
 
 function About() {
   return (
-    <>
-      <div className="flex items-start justify-start gap-6 px-50">
-        {/* Vertical Line */}
-        <div className="pt-6">
-          <div className="w-1 bg-gradient-to-b from-green-400 to-green-600 rounded-full h-40"></div>
-        </div>
-
+    <div className="px-4 sm:px-6 md:px-10 lg:px-20 py-4">
+      <div className="flex flex-col items-center  gap-6">
         {/* About Section */}
-        <div className="flex flex-col my-6 items-start">
-          <h1 className="text-3xl md:text-4xl font-bold text-dark mb-4">
+        <div className="flex flex-col items-start ">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-dark mb-2">
             About us
           </h1>
-          <p className="text-lg max-w-[800px] text-dark mb-4">
+
+          {/* Horizontal underline */}
+          <div className="w-45 h-1 bg-gradient-to-r from-green-400 to-green-600 rounded-full mb-4"></div>
+
+          <p className="text-base sm:text-lg max-w-prose text-dark mb-4">
             Hamlin Crowdfunding is a premier intermediary service facilitating
             project creators and potential backers in Ethiopia.
           </p>
@@ -26,7 +25,7 @@ function About() {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
