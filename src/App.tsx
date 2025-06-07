@@ -1,21 +1,28 @@
 import "./App.css";
-import About from "./components/About";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import DiscoverPage from "./components/DiscoverPage";
 import { HashRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import About from "./components/About";
 import Services from "./components/Services";
-import ProjectDetail from "./components/ProjectDetail";
-import ProjectsList from "./components/ProjectsList";
-import Footor from "./components/Footer";
 import HowItWorks from "./components/HowItWorks";
+import RegistrationPage from "./components/RegistrationPage";
+import DiscoverPage from "./components/DiscoverPage";
+import ProjectDetail from "./components/ProjectDetail";
+import StartupRegistration from "./components/StartupRegistration";
+import CampaignsList from "./components/CampaignsList";
+import BackersSection from "./components/BackersSection";
+import BackersPreview from "./components/BackersPreview";
+import ContactPage from "./components/ContactPage";
+import Projects from "./components/Projects";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <HashRouter>
-      {" "}
-      {/* 👈 changed from BrowserRouter */}
       <Navbar />
+      <ScrollToTop />
+
       <Routes>
         <Route
           path="/"
@@ -24,16 +31,25 @@ function App() {
               <Hero />
               <HowItWorks />
               <About />
+              <BackersPreview />
               <Services />
-              <ProjectsList />
-              <Footor />
             </>
           }
         />
-        <Route path="/discover" element={<DiscoverPage />} />
+        <Route path="/about" element={<DiscoverPage />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="/register-campaign" element={<StartupRegistration />} />
+        <Route path="/campaigns" element={<CampaignsList />} />
+        <Route path="/register" element={<RegistrationPage />} />
+
+        <Route path="/backers-investors" element={<BackersSection />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
+
+      <Footer />
     </HashRouter>
   );
 }
+
 export default App;
