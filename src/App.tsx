@@ -8,7 +8,6 @@ import Services from "./components/Services";
 import HowItWorks from "./components/HowItWorks";
 import RegistrationPage from "./components/RegistrationPage";
 import DiscoverPage from "./components/DiscoverPage";
-import ProjectDetail from "./components/ProjectDetail";
 import StartupRegistration from "./components/StartupRegistration";
 import CampaignsList from "./components/CampaignsList";
 import BackersSection from "./components/BackersSection";
@@ -37,7 +36,6 @@ function App() {
           }
         />
         <Route path="/about" element={<DiscoverPage />} />
-        <Route path="/project/:id" element={<ProjectDetail />} />
         <Route path="/register-campaign" element={<StartupRegistration />} />
         <Route path="/campaigns" element={<CampaignsList />} />
         <Route path="/register" element={<RegistrationPage />} />
