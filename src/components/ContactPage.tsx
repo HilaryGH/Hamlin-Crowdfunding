@@ -1,19 +1,38 @@
+import React, { useState } from "react";
+import axios from "axios";
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-function ContactPage() {
+const ContactPage: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    content: "",
+  });
+
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/api/messages", formData);
+      setStatus("Message submitted successfully!");
+      setFormData({ name: "", email: "", content: "" });
+    } catch (err) {
+      setStatus("Submission failed. Please try again.");
+    }
+  };
+
   return (
     <>
       {/* Hero Section */}
       <section
-        className="relative  bg-green-radial bg-cover bg-center min-h-[400px] flex items-center justify-center px-6 py-12"
+        className="relative bg-green-radial bg-cover bg-center min-h-[400px] flex items-center justify-center px-6 py-12"
         style={{ backgroundImage: "url('phone.png')" }}
       >
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative z-10 text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold fade-in-up delay-1">
-            Contact Us
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-bold">Contact Us</h1>
         </div>
       </section>
 
@@ -37,7 +56,6 @@ function ContactPage() {
               </p>
             </div>
 
-            {/* Social Media */}
             <div>
               <h4 className="text-sm font-semibold text-blue-800 mb-2">
                 Follow Us
@@ -84,15 +102,20 @@ function ContactPage() {
             <h3 className="text-2xl font-bold text-[#1d6ceb] mb-6">
               For Enquiries
             </h3>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Name
                 </label>
                 <input
                   type="text"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   placeholder="Your full name"
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+                  required
                 />
               </div>
 
@@ -102,8 +125,13 @@ function ContactPage() {
                 </label>
                 <input
                   type="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   placeholder="you@example.com"
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+                  required
                 />
               </div>
 
@@ -113,10 +141,27 @@ function ContactPage() {
                 </label>
                 <textarea
                   rows={4}
+                  value={formData.content}
+                  onChange={(e) =>
+                    setFormData({ ...formData, content: e.target.value })
+                  }
                   placeholder="Your message..."
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none resize-none"
+                  required
                 ></textarea>
               </div>
+
+              {status && (
+                <p
+                  className={`text-sm ${
+                    status.includes("success")
+                      ? "text-green-600"
+                      : "text-red-600"
+                  }`}
+                >
+                  {status}
+                </p>
+              )}
 
               <button
                 type="submit"
@@ -144,6 +189,6 @@ function ContactPage() {
       </div>
     </>
   );
-}
+};
 
 export default ContactPage;

@@ -5,27 +5,25 @@ import {
   FaLightbulb,
   FaUsers,
 } from "react-icons/fa";
+import TestimonialSection from "./TestimonialSection";
 
 const BackersSection = () => {
   return (
     <section id="backers" className="bg-white">
-      {/* Title over Background Image */}
-      <div className="relative h-[500px]  overflow-hidden shadow-lg mb-10">
+      {/* Hero Section */}
+      <div className="relative h-[400px] sm:h-[450px] overflow-hidden shadow-lg mb-14">
         <img
-          src="startups.webp"
+          src="Finance leaders-bro.svg"
           alt="Backers Background"
-          className="absolute inset-0 w-full h-[500px] object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black opacity-60"></div>
-        {/* Text Content */}
         <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-8">
-          <div className="inline-block animate-fadeInUp delay-[200ms]">
-            <h2 className="text-xl md:text-4xl font-bold text-white fade-in-up delay-1">
-              Project & Business Backers / Investors
-            </h2>
-            <span className="block h-1 w-40 md:w-60 bg-[#1d6ceb] mt-2 mx-auto rounded"></span>
-          </div>
-          <p className="mt-4 text-gray-200 text-sm md:text-lg max-w-2xl fade-in-up delay-2">
+          <h2 className="text-2xl sm:text-4xl font-bold text-white">
+            Project & Business Backers / Investors
+          </h2>
+          <span className="block h-1 w-32 sm:w-52 bg-[#1d6ceb] mt-3 rounded"></span>
+          <p className="mt-4 text-gray-200 text-sm sm:text-base md:text-lg max-w-2xl">
             At Hamlin Crowdfunding, we connect visionary backers with
             high-impact projects and business ventures across Ethiopia.
           </p>
@@ -33,7 +31,7 @@ const BackersSection = () => {
       </div>
 
       {/* Backer Categories */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 px-4 sm:px-6 lg:px-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20 px-4 sm:px-6 lg:px-16">
         {[
           {
             icon: <FaLightbulb />,
@@ -65,21 +63,23 @@ const BackersSection = () => {
             key={index}
             className="bg-green-50 p-6 rounded-2xl shadow-md border-l-4 border-[#1d6ceb] hover:shadow-lg transition duration-300"
           >
-            <div className="text-green-600 text-4xl mb-4">{item.icon}</div>
+            <div className="text-green-600 text-3xl mb-4">{item.icon}</div>
             <h4 className="font-semibold text-green-800 text-lg mb-2">
               {item.title}
             </h4>
-            <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              {item.desc}
+            </p>
           </div>
         ))}
       </div>
 
       {/* Why Invest */}
-      <div className="bg-green-50 rounded-2xl border-l-4 border-[#1d6ceb] mp-4 sm:mp-6 mx-4 sm:mx-6 lg:mx-16 py-16 mb-20">
-        <h3 className="text-2xl font-semibold text-center text-green-700 mb-8">
+      <div className="bg-green-50 rounded-2xl border-l-4 border-[#1d6ceb] mx-4 sm:mx-6 lg:mx-16 py-12 px-4 sm:px-8 mb-20">
+        <h3 className="text-2xl sm:text-3xl font-semibold text-center text-green-700 mb-8">
           Why Back with Hamlin?
         </h3>
-        <div className="grid md:grid-cols-2 gap-8 text-base text-gray-700">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm sm:text-base md:text-lg text-gray-700">
           <ul className="list-disc list-inside space-y-4">
             <li>
               <strong>Rigorous Vetting:</strong> Every project and business is
@@ -103,52 +103,24 @@ const BackersSection = () => {
         </div>
       </div>
 
-      {/* Testimonials */}
-      <div className="mb-20 px-4 sm:px-6 lg:px-16">
-        <h3 className="text-2xl font-semibold text-center text-green-700 mb-8">
-          Voices of Our Backers
-        </h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          {[
-            {
-              quote:
-                "Investing in an agritech startup through Hamlin was simple and promising.",
-              name: "Elias M., Business Investor",
-            },
-            {
-              quote:
-                "Backed a youth-led project. Watching it succeed has been rewarding!",
-              name: "Hanna G., Project Backer",
-            },
-          ].map((testimonial, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-green-200 rounded-xl p-6 shadow-sm"
-            >
-              <p className="italic text-gray-600">“{testimonial.quote}”</p>
-              <p className="mt-4 font-semibold text-green-800">
-                — {testimonial.name}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Testimonials Section */}
+      <TestimonialSection />
 
       {/* Call to Action */}
-      <div className="text-center px-4 sm:px-6 lg:px-16 mb-16">
-        <h4 className="text-xl font-semibold mb-6 text-green-700">
+      <div className="text-center px-4 sm:px-6 lg:px-16 mb-20">
+        <h4 className="text-lg sm:text-xl font-semibold mb-6 text-green-700">
           Be part of Ethiopia’s future economy.
         </h4>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <a
             href="#projects"
-            className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition"
+            className="bg-green-600 text-white px-6 py-3 sm:px-8 sm:py-3 rounded-full hover:bg-green-700 transition"
           >
             Explore Opportunities
           </a>
           <a
             href="#"
-            className="border border-green-600 text-green-700 px-6 py-3 rounded-full hover:bg-green-100 transition"
+            className="border border-green-600 text-green-700 px-6 py-3 sm:px-8 sm:py-3 rounded-full hover:bg-green-100 transition"
           >
             Become a Backer
           </a>

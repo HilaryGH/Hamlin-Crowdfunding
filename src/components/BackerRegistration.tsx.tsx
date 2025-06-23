@@ -1,5 +1,6 @@
 // BackerRegistration.tsx
 import React, { useState } from "react";
+import axios from "axios";
 
 type BackerFormData = {
   fullName: string;
@@ -23,8 +24,7 @@ const BackerRegistration: React.FC = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formData.fullName || !formData.email || !formData.interest) {
@@ -32,9 +32,15 @@ const BackerRegistration: React.FC = () => {
       return;
     }
 
-    setError("");
-    setSubmitted(true);
-    console.log("Backer Form Submitted:", formData);
+    try {
+      await axios.post("http://localhost:5000/api/backers", formData);
+      setSubmitted(true);
+      setError("");
+      setFormData({ fullName: "", email: "", interest: "" });
+    } catch (err) {
+      console.error(err);
+      setError("Submission failed. Please try again.");
+    }
   };
 
   return (

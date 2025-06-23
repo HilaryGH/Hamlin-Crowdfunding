@@ -2,16 +2,26 @@ import { useState } from "react";
 import { X, Search, Menu } from "lucide-react";
 import { FaFacebook, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-
+import { useNavigate } from "react-router-dom";
 import { MdLocationOn, MdPhone, MdEmail } from "react-icons/md";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/projects?search=${encodeURIComponent(searchQuery.trim())}`);
+      setMenuOpen(false);
+    }
+  };
 
   return (
     <>
       {/* Top Info Bar */}
-      <div className="hidden md:flex justify-between items-center bg-white text-[#022C22] text-sm px-12 py-2">
+      <div className="hidden md:flex justify-between items-center bg-white text-[#22C55E] text-sm px-12 py-2">
         <div className="flex gap-6 items-center">
           <span className="flex items-center gap-1">
             <MdLocationOn /> Addis Ababa, Ethiopia
@@ -29,7 +39,7 @@ function Navbar() {
             href="https://facebook.com/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-400"
+            className="hover:text-blue-500"
           >
             <FaFacebook size={18} />
           </a>
@@ -37,7 +47,7 @@ function Navbar() {
             href="https://linkedin.com/in/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-400"
+            className="hover:text-blue-500"
           >
             <FaLinkedin size={18} />
           </a>
@@ -45,7 +55,7 @@ function Navbar() {
             href="https://x.com/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-400"
+            className="hover:text-blue-500"
           >
             <FaXTwitter size={18} />
           </a>
@@ -53,79 +63,85 @@ function Navbar() {
             href="https://wa.me/251911508734"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-green-400"
+            className="hover:text-green-500"
           >
             <FaWhatsapp size={18} />
           </a>
         </div>
       </div>
 
-      {/* Navbar */}
-      <header className="bg-green-radial shadow sticky top-0 z-50 transition duration-300 min-h-[64px]">
+      {/* Main Navbar */}
+      <header className="bg-green-radial shadow sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 lg:px-12 py-3">
-          {/* Left: Logo */}
-          <div className="flex items-center gap-2 w-1/2 z-10">
+          {/* Logo */}
+          <div
+            className="flex items-center gap-3 z-10 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <img
-              src="Hamlin_Crowdfunding logo.png"
-              alt="HamlinCapital logo"
-              className="h-10 md:h-12 lg:h-16 w-auto object-contain"
+              src="Crowd-logo.png"
+              alt="Hamlin Capital"
+              className="h-10 md:h-12 lg:h-14 w-auto object-contain"
             />
-            <span className="text-white text-base md:text-lg lg:text-xl font-semibold">
-              Hamlin-crowdfunding
+            <span className="text-white text-lg md:text-xl lg:text-2xl font-bold">
+              Hamlin Crowdfunding
             </span>
           </div>
 
-          {/* Right: NavLinks + Search */}
-          <div className="w-2/3 flex justify-end items-center gap-6 md:gap-10 z-10 text-white text-sm md:text-base font-medium">
-            {/* Nav Links */}
-            <nav className="hidden md:flex gap-6 lg:gap-8">
-              {["About", "Backers & Investors", "Contact"].map((item) => (
+          {/* Desktop Nav + Search */}
+          <div className="hidden md:flex items-center gap-8 text-white font-medium">
+            <nav className="flex gap-6">
+              {[
+                { name: "Home", path: "/" },
+                { name: "About", path: "#about" },
+                { name: "Backers & Investors", path: "#/backers-investors" },
+                { name: "Contact", path: "#contact" },
+              ].map((link) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-                  className=" text-lg relative pb-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                  key={link.name}
+                  href={link.path}
+                  className="relative text-lg pb-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
                 >
-                  {item}
+                  {link.name}
                 </a>
               ))}
             </nav>
 
-            {/* Desktop Search Input */}
-            <div className="hidden md:flex relative">
+            <form onSubmit={handleSearch} className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300" />
               <input
                 type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Find projects..."
                 className="pl-8 pr-3 py-1 md:py-2 rounded-md bg-[#22C55E] text-white placeholder-white text-sm focus:outline-none focus:ring-2 focus:ring-[#022C22] w-36 md:w-44 lg:w-56"
               />
-            </div>
+            </form>
+          </div>
 
-            {/* Hamburger Menu for Mobile */}
-            <div className="md:hidden w-6 h-6">
-              <Menu
-                className="w-6 h-6 text-white"
-                onClick={() => setMenuOpen(true)}
-              />
-            </div>
+          {/* Hamburger Menu */}
+          <div className="md:hidden">
+            <Menu
+              className="w-6 h-6 text-white"
+              onClick={() => setMenuOpen(true)}
+            />
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Sidebar Menu */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 flex">
-          {/* Sidebar */}
-          <nav className="w-3/4 max-w-xs bg-green-radial px-6 py-6 flex flex-col space-y-6 animate-slide-in-left">
-            {/* Top Row */}
-            <div className="flex items-center justify-between w-full">
+          <nav className="w-full max-w-xs bg-green-radial px-6 py-6 flex flex-col space-y-6 animate-slide-in-left">
+            <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <img
-                  src="Hamlin_Crowdfunding logo.png"
-                  alt="HamlinCapital logo"
+                  src="Crowd-logo.png"
+                  alt="Hamlin Capital"
                   className="h-10 w-auto object-contain"
                 />
                 <span className="text-white text-sm font-semibold">
-                  Hamlin-crowdfunding
+                  Hamlin Crowdfunding
                 </span>
               </div>
               <X
@@ -134,20 +150,21 @@ function Navbar() {
               />
             </div>
 
-            {/* Mobile Nav Links */}
+            {/* Mobile Links */}
             <div className="flex flex-col space-y-4 mt-4">
               {[
-                { text: "About", href: "#about" },
-                { text: "Backers & Investors", href: "#/backers-investors" },
-                { text: "Contact", href: "#contact" },
-              ].map(({ text, href }) => (
+                { name: "Home", path: "/" },
+                { name: "About", path: "#about" },
+                { name: "Backers & Investors", path: "#/backers-investors" },
+                { name: "Contact", path: "#contact" },
+              ].map((link) => (
                 <a
-                  key={text}
-                  href={href}
+                  key={link.name}
+                  href={link.path}
                   className="text-white text-md font-medium border-b border-white pb-2"
                   onClick={() => setMenuOpen(false)}
                 >
-                  {text}
+                  {link.name}
                 </a>
               ))}
             </div>
@@ -169,23 +186,25 @@ function Navbar() {
             </div>
 
             {/* Mobile Search */}
-            <div className="mt-6">
+            <form onSubmit={handleSearch} className="mt-6">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300" />
                 <input
                   type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Find projects..."
                   className="pl-8 pr-3 py-2 rounded-md bg-[#22C55E] text-white placeholder-white text-sm focus:outline-none focus:ring-2 focus:ring-[#022C22] w-full"
                 />
               </div>
-            </div>
+            </form>
           </nav>
 
           {/* Backdrop */}
           <div
             className="flex-1 bg-black opacity-40"
             onClick={() => setMenuOpen(false)}
-          ></div>
+          />
         </div>
       )}
     </>

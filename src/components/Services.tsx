@@ -25,10 +25,10 @@ function Services() {
   return (
     <section
       id="services"
-      className="py-16 px-4 sm:px-6 md:px-10 lg:px-20 bg-gradient-to-br from-white to-blue-50 text-dark"
+      className="py-16 px-4 sm:px-6 md:px-10 lg:px-20 bg-green-50 text-dark"
     >
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1d6ceb] mb-12 leading-snug">
+        <h2 className="text-xl sm:text-3xl  font-bold text-[#1d6ceb] mb-12 leading-snug">
           Explore the crowdfunding models we offer to support your initiatives
         </h2>
 

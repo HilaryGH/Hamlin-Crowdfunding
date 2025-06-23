@@ -6,38 +6,37 @@ import {
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-function Footor() {
+const Footer: React.FC = () => {
   return (
     <>
       {/* Top CTA Section */}
       <section className="bg-green-radial text-white py-12 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-start gap-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Quick Links */}
-          <div className="flex flex-col gap-3 text-sm sm:text-base">
-            <h3 className="font-semibold text-lg mb-2">Quick Links</h3>
-            <Link to="/about" className="hover:underline hover:text-white">
-              About
-            </Link>
-            <Link to="/register" className="hover:underline hover:text-white">
-              Start a Campaign
-            </Link>
-            <Link
-              to="/backers-investors"
-              className="hover:underline hover:text-white"
-            >
-              Investors & Backers
-            </Link>
-            <Link to="/#services" className="hover:underline hover:text-white">
-              Models of Crowdfunding
-            </Link>
+          <div className="space-y-3 text-center md:text-left">
+            <h3 className="font-semibold text-lg">Quick Links</h3>
+            <nav className="flex flex-col gap-2">
+              <Link to="/about" className="hover:underline">
+                About
+              </Link>
+              <Link to="/register" className="hover:underline">
+                Start a Campaign
+              </Link>
+              <Link to="/backers-investors" className="hover:underline">
+                Investors & Backers
+              </Link>
+              <Link to="/user-guide" className="hover:underline">
+                User Guide
+              </Link>
+            </nav>
           </div>
 
           {/* Centered CTA */}
-          <div className="flex-1 text-center">
+          <div className="text-center flex flex-col items-center">
             <h2 className="text-2xl sm:text-3xl font-bold mb-2">
               Join the Movement
             </h2>
-            <p className="mb-4 text-gray-200 max-w-md mx-auto">
+            <p className="mb-4 text-gray-200 max-w-sm">
               Support innovative projects and empower communities across
               Ethiopia.
             </p>
@@ -49,14 +48,14 @@ function Footor() {
           </div>
 
           {/* Social Icons */}
-          <div className="flex flex-col items-center sm:items-end gap-3 text-xl sm:text-2xl">
+          <div className="space-y-3 text-center md:text-right">
             <h3 className="font-semibold text-lg">Follow Us</h3>
-            <div className="flex gap-6">
+            <div className="flex justify-center md:justify-end gap-6 text-2xl">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white"
+                className="hover:text-white transition"
               >
                 <FaFacebook />
               </a>
@@ -64,7 +63,7 @@ function Footor() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white"
+                className="hover:text-white transition"
               >
                 <FaLinkedin />
               </a>
@@ -72,7 +71,7 @@ function Footor() {
                 href="https://wa.me/251911508734"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white"
+                className="hover:text-white transition"
               >
                 <FaWhatsapp />
               </a>
@@ -80,7 +79,7 @@ function Footor() {
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white"
+                className="hover:text-white transition"
               >
                 <FaXTwitter />
               </a>
@@ -89,29 +88,28 @@ function Footor() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#022C22] text-gray-300 py-6">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
-          <p>
+      {/* Bottom Footer */}
+      <footer className="bg-[#022C22] text-gray-300 py-6 px-4">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+          <p className="text-center md:text-left">
             &copy; {new Date().getFullYear()} Hamlin Crowdfunding. All rights
             reserved.
           </p>
-
-          <div className="flex gap-4 items-center">
-            <a href="#" className="hover:text-white">
+          <nav className="flex gap-4">
+            <a href="#" className="hover:text-white transition">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="#" className="hover:text-white transition">
               Terms of Use
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="#" className="hover:text-white transition">
               Contact
             </a>
-          </div>
+          </nav>
         </div>
       </footer>
     </>
   );
-}
+};
 
-export default Footor;
+export default Footer;
