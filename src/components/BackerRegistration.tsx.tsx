@@ -33,7 +33,10 @@ const BackerRegistration: React.FC = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/backers", formData);
+      await axios.post(
+        "https://crowdfunding-backend-ehc7.onrender.com/api/backers",
+        formData
+      );
       setSubmitted(true);
       setError("");
       setFormData({ fullName: "", email: "", interest: "" });

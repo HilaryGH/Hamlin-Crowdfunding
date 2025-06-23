@@ -141,9 +141,13 @@ const StartupRegistration: React.FC = () => {
     });
 
     try {
-      await axios.post("http://localhost:5000/api/startups", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axios.post(
+        "https://crowdfunding-backend-ehc7.onrender.com/api/startups",
+        data,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
       setSubmitted(true);
       setError("");

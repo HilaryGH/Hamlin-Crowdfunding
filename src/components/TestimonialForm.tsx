@@ -35,11 +35,15 @@ const TestimonialForm: React.FC = () => {
     if (formData.image) data.append("image", formData.image);
 
     try {
-      await axios.post("http://localhost:5000/api/testimonials", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        "https://crowdfunding-backend-ehc7.onrender.com/api/testimonials",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       setSuccess("Testimonial submitted!");
       setFormData({ name: "", quote: "", image: null });

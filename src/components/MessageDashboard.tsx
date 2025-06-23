@@ -19,7 +19,9 @@ const MessageDashboard: React.FC = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.get("http://localhost:5000/api/messages");
+      const res = await axios.get(
+        "https://crowdfunding-backend-ehc7.onrender.com/api/messages"
+      );
       setMessages(res.data);
       setShowMessages(true);
     } catch (err) {

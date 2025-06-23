@@ -22,7 +22,9 @@ const ProjectList: React.FC = () => {
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const res = await fetch("http://localhost:5000/api/projects");
+        const res = await fetch(
+          "https://crowdfunding-backend-ehc7.onrender.com/api/projects"
+        );
         const data = await res.json();
         setProjects(data);
       } catch (e) {

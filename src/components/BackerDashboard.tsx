@@ -11,7 +11,7 @@ type Backer = {
   status: string;
 };
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://crowdfunding-backend-ehc7.onrender.com";
 
 const BackerDashboard: React.FC = () => {
   const [email, setEmail] = useState("");

@@ -41,7 +41,10 @@ const SubmitProjectForm: React.FC = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/projects/submit", data);
+      await axios.post(
+        "https://crowdfunding-backend-ehc7.onrender.com/api/projects/submit",
+        data
+      );
       alert("Project submitted successfully!");
     } catch (err) {
       console.error(err);

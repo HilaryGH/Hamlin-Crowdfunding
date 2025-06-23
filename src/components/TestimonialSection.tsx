@@ -17,7 +17,9 @@ const TestimonialSection: React.FC = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/testimonials");
+        const res = await axios.get(
+          "https://crowdfunding-backend-ehc7.onrender.com/api/testimonials"
+        );
         setTestimonials(res.data);
       } catch (error) {
         console.error("Failed to fetch testimonials", error);
@@ -73,7 +75,7 @@ const TestimonialSection: React.FC = () => {
             <div className="flex items-center gap-4 mb-4 w-full">
               {testimonial.image ? (
                 <img
-                  src={`http://localhost:5000/uploads/${testimonial.image}`}
+                  src={`https://crowdfunding-backend-ehc7.onrender.com/uploads/${testimonial.image}`}
                   alt={testimonial.name}
                   className="w-16 h-16 rounded-full object-cover border border-green-300 flex-shrink-0"
                 />

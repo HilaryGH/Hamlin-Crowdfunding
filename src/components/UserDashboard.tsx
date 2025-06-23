@@ -40,7 +40,9 @@ const UserDashboard: React.FC = () => {
   const fetchSubmission = async () => {
     try {
       const res = await axios.get<StartupData>(
-        `http://localhost:5000/api/startups/${encodeURIComponent(email)}`
+        `https://crowdfunding-backend-ehc7.onrender.com/api/startups/${encodeURIComponent(
+          email
+        )}`
       );
       setData(res.data);
       setError("");
@@ -70,7 +72,10 @@ const UserDashboard: React.FC = () => {
   const handleUpdate = async () => {
     if (!data) return;
     try {
-      await axios.put(`http://localhost:5000/api/startups/${data._id}`, data);
+      await axios.put(
+        `https://crowdfunding-backend-ehc7.onrender.com/api/startups/${data._id}`,
+        data
+      );
       alert("Updated successfully!");
     } catch {
       alert("Update failed.");
@@ -80,7 +85,9 @@ const UserDashboard: React.FC = () => {
   const handleDelete = async () => {
     if (!data || !window.confirm("Are you sure you want to delete?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/startups/${data._id}`);
+      await axios.delete(
+        `https://crowdfunding-backend-ehc7.onrender.com/api/startups/${data._id}`
+      );
       setData(null);
       alert("Deleted successfully.");
     } catch {
@@ -154,7 +161,9 @@ const UserDashboard: React.FC = () => {
                           {field.replace(/([A-Z])/g, " $1")}:
                         </strong>{" "}
                         <a
-                          href={`http://localhost:5000/uploads/${data[field]!}`}
+                          href={`https://crowdfunding-backend-ehc7.onrender.com/uploads/${data[
+                            field
+                          ]!}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-600 hover:underline"

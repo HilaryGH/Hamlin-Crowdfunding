@@ -34,7 +34,9 @@ const ProjectDetail: React.FC = () => {
   useEffect(() => {
     async function fetchProject() {
       try {
-        const res = await axios.get(`http://localhost:5000/api/projects/${id}`);
+        const res = await axios.get(
+          `https://crowdfunding-backend-ehc7.onrender.com/api/projects/${id}`
+        );
         setProject(res.data);
       } catch {
         setError("Failed to load project details.");
@@ -48,12 +50,15 @@ const ProjectDetail: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/backers", {
-        fullName,
-        email,
-        interest,
-        projectId: project?._id,
-      });
+      await axios.post(
+        "https://crowdfunding-backend-ehc7.onrender.com/api/backers",
+        {
+          fullName,
+          email,
+          interest,
+          projectId: project?._id,
+        }
+      );
       alert("Thank you for your interest!");
       setShowInterest(false);
     } catch {

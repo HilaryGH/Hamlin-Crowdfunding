@@ -15,7 +15,10 @@ const ContactPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/messages", formData);
+      await axios.post(
+        "https://crowdfunding-backend-ehc7.onrender.com/api/messages",
+        formData
+      );
       setStatus("Message submitted successfully!");
       setFormData({ name: "", email: "", content: "" });
     } catch (err) {

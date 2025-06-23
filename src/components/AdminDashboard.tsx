@@ -62,8 +62,14 @@ const AdminDashboard: React.FC = () => {
         const headers = { Authorization: `Bearer ${token}` };
 
         const [startupRes, backerRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/admin/startups", { headers }),
-          axios.get("http://localhost:5000/api/admin/backers", { headers }),
+          axios.get(
+            "https://crowdfunding-backend-ehc7.onrender.com/api/admin/startups",
+            { headers }
+          ),
+          axios.get(
+            "https://crowdfunding-backend-ehc7.onrender.com/api/admin/backers",
+            { headers }
+          ),
         ]);
 
         setStartups(startupRes.data);
@@ -83,7 +89,7 @@ const AdminDashboard: React.FC = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `http://localhost:5000/api/admin/startups/${id}/approve`,
+        `https://crowdfunding-backend-ehc7.onrender.com/api/admin/startups/${id}/approve`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -105,9 +111,12 @@ const AdminDashboard: React.FC = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/admin/startups/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://crowdfunding-backend-ehc7.onrender.com/api/admin/startups/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setStartups((prev) => prev.filter((s) => s._id !== id));
     } catch (err) {
       alert("Delete failed");
@@ -131,7 +140,7 @@ const AdminDashboard: React.FC = () => {
   if (error) return <p className="p-6 text-red-600">{error}</p>;
 
   const fileUrl = (filename: string) =>
-    `http://localhost:5000/uploads/${filename}`;
+    `https://crowdfunding-backend-ehc7.onrender.com/uploads/${filename}`;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 space-y-12">
