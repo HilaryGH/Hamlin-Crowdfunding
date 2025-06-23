@@ -1,7 +1,7 @@
 // src/services/authService.ts
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/auth"; // adjust to your backend URL
+const API_URL = "https://crowdfunding-backend-ehc7.onrender.com/api/auth"; // adjust to your backend URL
 
 export const register = async (userData: any) => {
   return axios.post(`${API_URL}/register`, userData);
