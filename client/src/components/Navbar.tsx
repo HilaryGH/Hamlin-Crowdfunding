@@ -69,9 +69,10 @@ function Navbar() {
           </a>
         </div>
       </div>
+      <div className="h-1 w-full bg-green-radial"></div>
 
       {/* Main Navbar */}
-      <header className="bg-green-radial shadow sticky top-0 z-50">
+      <header className="bg-white shadow sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 lg:px-12 py-3">
           {/* Logo */}
           <div
@@ -79,17 +80,14 @@ function Navbar() {
             onClick={() => navigate("/")}
           >
             <img
-              src="Crowd-logo.png"
+              src="Crowd.png"
               alt="Hamlin Capital"
               className="h-10 md:h-12 lg:h-14 w-auto object-contain"
             />
-            <span className="text-white text-lg md:text-xl lg:text-2xl font-bold">
-              Hamlin Crowdfunding
-            </span>
           </div>
 
           {/* Desktop Nav + Search */}
-          <div className="hidden md:flex items-center gap-8 text-white font-medium">
+          <div className="hidden md:flex items-center gap-8 text-blue-500 font-medium">
             <nav className="flex gap-6">
               {[
                 { name: "Home", path: "/" },
@@ -100,7 +98,7 @@ function Navbar() {
                 <a
                   key={link.name}
                   href={link.path}
-                  className="relative text-lg pb-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                  className="relative text-lg pb-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-green-radial after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {link.name}
                 </a>
@@ -114,7 +112,7 @@ function Navbar() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Find projects..."
-                className="pl-8 pr-3 py-1 md:py-2 rounded-md bg-[#22C55E] text-white placeholder-white text-sm focus:outline-none focus:ring-2 focus:ring-[#022C22] w-36 md:w-44 lg:w-56"
+                className="pl-8 pr-3 py-1 md:py-2 rounded-md bg-green-radial text-white placeholder-white text-sm focus:outline-none focus:ring-2 focus:ring-[#022C22] w-36 md:w-44 lg:w-56"
               />
             </form>
           </div>
@@ -122,7 +120,7 @@ function Navbar() {
           {/* Hamburger Menu */}
           <div className="md:hidden">
             <Menu
-              className="w-6 h-6 text-white"
+              className="w-6 h-6 text-[#22C55E]"
               onClick={() => setMenuOpen(true)}
             />
           </div>
@@ -132,20 +130,17 @@ function Navbar() {
       {/* Mobile Sidebar Menu */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 flex">
-          <nav className="w-full max-w-xs bg-green-radial px-6 py-6 flex flex-col space-y-6 animate-slide-in-left">
+          <nav className="w-full max-w-xs bg-white px-6 py-6 flex flex-col space-y-6 animate-slide-in-left">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <img
-                  src="Crowd-logo.png"
+                  src="Crowd.png"
                   alt="Hamlin Capital"
                   className="h-10 w-auto object-contain"
                 />
-                <span className="text-white text-sm font-semibold">
-                  Hamlin Crowdfunding
-                </span>
               </div>
               <X
-                className="w-6 h-6 text-white cursor-pointer"
+                className="w-6 h-6 text-[#22C55E] cursor-pointer"
                 onClick={() => setMenuOpen(false)}
               />
             </div>
@@ -161,7 +156,7 @@ function Navbar() {
                 <a
                   key={link.name}
                   href={link.path}
-                  className="text-white text-md font-medium border-b border-white pb-2"
+                  className="text-blue-500 text-md font-medium border-b border-[#22C55E] pb-2"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.name}
@@ -170,7 +165,7 @@ function Navbar() {
             </div>
 
             {/* Mobile Contact Info */}
-            <div className="mt-8 space-y-3 text-white text-sm">
+            <div className="mt-8 space-y-3 text-gray-700 text-sm">
               <div className="flex items-center gap-2">
                 <MdPhone className="w-5 h-5" />
                 <a href="tel:+251911508734" className="hover:underline">
@@ -194,7 +189,7 @@ function Navbar() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Find projects..."
-                  className="pl-8 pr-3 py-2 rounded-md bg-[#22C55E] text-white placeholder-white text-sm focus:outline-none focus:ring-2 focus:ring-[#022C22] w-full"
+                  className="pl-8 pr-3 py-2 rounded-md bg-green-radial text-white placeholder-white text-sm focus:outline-none focus:ring-2 focus:ring-[#022C22] w-full"
                 />
               </div>
             </form>

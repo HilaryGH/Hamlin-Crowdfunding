@@ -1,6 +1,7 @@
 
 .bg-green-radial {
   background: radial-gradient(circle at center, #22C55E 0%, #065F46 70%, #022C22 100%);
+ 
 }
 /* ==== TEXT COLORS ==== */
 .text-primary {
