@@ -1,4 +1,5 @@
 [build]
   base = "client"
   command = "npm run build"
-  publish = "dist" # Or "build" depending on your setup
+  publish = "client/dist"
+
